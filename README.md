@@ -8,8 +8,8 @@ Scripts and supporting materials accompanying the manuscript "Storm-Type Influen
 
 ## Data Sources
 
-- AORC: Analysis of Record for Calibration — hourly precipitation and other meteorological data are available from NOAA/NWS.
-- CORA: Coastal Ocean Reanalysis data are available from NOAA.
+- AORC: Analysis of Record for Calibration — hourly precipitation are available from [https://registry.opendata.aws/noaa-nws-aorc](NOAA/NWS).
+- CORA: Coastal Ocean Reanalysis data are available from [https://tidesandcurrents.noaa.gov/cora.html](NOAA).
 
 ## Requirements
 
