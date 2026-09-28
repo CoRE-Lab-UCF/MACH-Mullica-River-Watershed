@@ -90,22 +90,23 @@ acc_cor <- function(i, aorc_subset_lat_lon, years, cora_path, cora_path_decl, na
   tryCatch({
     
 #Results vectors
-cor_r = numeric(length(rain_dur_seq)) 
-cor_r_tc = numeric(length(rain_dur_seq))
-cor_r_non_tc = numeric(length(rain_dur_seq))
-cor_ntr = numeric(length(rain_dur_seq))
-cor_ntr_tc = numeric(length(rain_dur_seq))
-cor_ntr_non_tc = numeric(length(rain_dur_seq))   
-cor_pval_r = numeric(length(rain_dur_seq))
-cor_pval_r_tc = numeric(length(rain_dur_seq))
-cor_pval_r_non_tc = numeric(length(rain_dur_seq))
-cor_pval_ntr = numeric(length(rain_dur_seq))  
-cor_pval_ntr_tc = numeric(length(rain_dur_seq))  
-cor_pval_ntr_non_tc = numeric(length(rain_dur_seq)) 
-n_r_tc = numeric(length(rain_dur_seq))
-n_r_non_tc = numeric(length(rain_dur_seq)) 
-n_ntr_tc = numeric(length(rain_dur_seq))  
-n_ntr_non_tc  = numeric(length(rain_dur_seq)) 
+cor_r = numeric(48) 
+cor_r_tc = numeric(48) 
+cor_r_non_tc = numeric(48)
+cor_ntr = numeric(48)
+cor_ntr_tc = numeric(48)
+cor_ntr_non_tc = numeric(48)   
+cor_pval_r = numeric(48)
+cor_pval_r_tc = numeric(48)
+cor_pval_r_non_tc = numeric(48)
+cor_pval_ntr = numeric(48)  
+cor_pval_ntr_tc = numeric(48)  
+cor_pval_ntr_non_tc = numeric(48) 
+n_r_tc = numeric(48)
+n_r_non_tc = numeric(48) 
+n_ntr_tc = numeric(48)  
+n_ntr_non_tc  = numeric(48) 
+
 
 # AORC data processing
 aorc_precip <- numeric()
@@ -162,7 +163,7 @@ cora_ntr_decl_df <- HURDAT(cora_ntr_decl_df,
                            lon.loc = -aorc_subset_lat_lon$lon[i],
                            rad = 350)
 
-for(k in 1:length(rain_dur_seq)){
+for(k in 1:48){
 
 
   # Decluster events
@@ -237,7 +238,7 @@ for(k in 1:length(rain_dur_seq)){
  }
 
  # Store results
- res <- data.frame(aorc = rep(i,length(rain_dur_seq)),rain_dur_seq, cora = rep(3,length(rain_dur_seq)),
+ res <- data.frame(rain_dur_seq, cora = rep(3,48),
                    cor_r = cor_r, cor_ntr = cor_ntr,
                    cor_r_tc = cor_r_tc, cor_r_non_tc = cor_r_non_tc,
                    cor_ntr_tc = cor_ntr_tc, cor_ntr_non_tc = cor_ntr_non_tc,
@@ -288,7 +289,7 @@ clusterEvalQ(cl, {
 })
 
 # Run parallel processing
-all_results <- parLapply(cl, 2301:2355, acc_cor,
+all_results <- parLapply(cl, 1:100, acc_cor,
                          aorc_subset_lat_lon = aorc_subset_lat_lon,
                          cora_path = cora_path,
                          cora_path_decl = cora_path_decl,
@@ -302,13 +303,13 @@ stopCluster(cl)
 print(all_results)
 
 # Flatten the nested list structure
-#flattened_list <- unlist(all_results, recursive = FALSE)
+flattened_list <- unlist(all_results, recursive = FALSE)
 
 # Combine all dataframes into one
-combined_df <- do.call(rbind, all_results)
+combined_df <- do.call(rbind, flattened_list)
 
 # Reset row names to be sequential
 rownames(combined_df) <- NULL
 
 # Write to CSV
-write.csv(combined_df, paste('/anvil/projects/x-ees250144/x-rjane/CONUS/',name,'_cor_by_acc_time_2350.csv',sep=""), row.names = FALSE)
+write.csv(combined_df, paste('/anvil/projects/x-ees250144/x-rjane/CONUS/',name,'_cor_by_acc_time_1.csv',sep=""), row.names = FALSE)
