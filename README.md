@@ -4,7 +4,7 @@ Scripts and supporting materials accompanying the manuscript "Storm-Type Influen
 
 ## Contents
 
-- `Scripts/` : scripts used to generate the work included
+- `Scripts/` : R scripts used to carry out the analysis and Python scripts used to visualize the results.
 
 ## Data Sources
 
@@ -20,6 +20,6 @@ Additional R and Python packages required to run the scripts are listed within t
 
 ## Contact
 
-Robert Jane
-University of Central Florida
+Robert Jane <br>
+University of Central Florida <br>
 r.jane@ucf.edu
