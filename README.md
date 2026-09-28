@@ -1,23 +1,25 @@
 # MACH Mullica River Watershed
 
-Brief description of the project: what it is, what area it covers, and who it's for.
+Scripts and supporting materials accompanying the manuscript "Storm-Type Influence on Spatial Rainfall–Surge Dependence and Compound Flood Boundary Condition Generation in a Coastal Watershed".
 
 ## Contents
 
-- `data/` : description of the data and files included
+- `Scripts/` : R scripts used to carry out the analysis and Python scripts used to visualize the results.
 
 ## Data Sources
 
-- List where the data came from (agencies, datasets, links)
+- AORC: Analysis of Record for Calibration — hourly precipitation are available from [https://registry.opendata.aws/noaa-nws-aorc](NOAA/NWS).
+- CORA: Coastal Ocean Reanalysis data are available from [https://tidesandcurrents.noaa.gov/cora.html](NOAA).
 
 ## Requirements
 
-- Software or tools needed to use the files (e.g., ArcGIS, Python, QGIS)
+- R (version 4.5.1)
+- Python (version 3.10.18)
 
-## Usage
-
-How to open or run the files.
+Additional R and Python packages required to run the scripts are listed within the respective scripts.
 
 ## Contact
 
-Your name / CoRE Lab UCF, email
+Robert Jane <br>
+University of Central Florida <br>
+r.jane@ucf.edu
